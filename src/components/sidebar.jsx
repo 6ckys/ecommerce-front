@@ -44,7 +44,7 @@ const Sidebar = () => {
               </button>
               <ul>
                 <li className="active dropdown-menu">
-                  <Link to="" className="dropdown-item">
+                  <Link to="/createcategories" className="dropdown-item">
                     <span className="fa fa-plus-square" />{" "}
                     <span className="xn-text">Add Category</span>
                   </Link>
