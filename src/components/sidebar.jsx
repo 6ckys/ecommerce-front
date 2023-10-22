@@ -70,13 +70,13 @@ const Sidebar = () => {
               </button>
               <ul>
                 <li className="active dropdown-menu">
-                  <Link to="" className="dropdown-item">
+                  <Link to="/createsubcategories" className="dropdown-item">
                     <span className="fa fa-plus-square" />{" "}
                     <span className="xn-text">Add Subcategory</span>
                   </Link>
                 </li>
                 <li className="active dropdown-menu">
-                  <Link to="" className="dropdown-item">
+                  <Link to="/listsubcategories" className="dropdown-item">
                     <span className="fa fa-file-text-o" />{" "}
                     <span className="xn-text">List Subcategory</span>
                   </Link>
