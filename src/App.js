@@ -9,6 +9,9 @@ import Createcategories from './views/categories/createcategories';
 import Listsubcategories from './views/subcategories/listsubcategories';
 import Updatesubcategories from './views/subcategories/updatesubcategories';
 import Createsubcategories from './views/subcategories/createsubcategories';
+import Listproducts from './views/products/listproducts';
+import Updateproducts from './views/products/updateproducts';
+import Createproducts from './views/products/createproducts';
 
 function App() {
   return (
@@ -23,6 +26,9 @@ function App() {
             <Route path='/listsubcategories' element={<Listsubcategories></Listsubcategories>}></Route>
             <Route path='/updatesubcategories/:id' element={<Updatesubcategories></Updatesubcategories>}></Route>
             <Route path='/createsubcategories/' element={<Createsubcategories></Createsubcategories>}></Route>
+            <Route path='/listproducts' element={<Listproducts></Listproducts>}></Route>
+            <Route path='/updateproducts/:id' element={<Updateproducts></Updateproducts>}></Route>
+            <Route path='/createproducts/' element={<Createproducts></Createproducts>}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

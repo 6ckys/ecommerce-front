@@ -96,13 +96,13 @@ const Sidebar = () => {
               </button>
               <ul>
                 <li className="active dropdown-menu">
-                  <Link to="" className="dropdown-item">
+                  <Link to="/createproducts" className="dropdown-item">
                     <span className="fa fa-plus-square" />{" "}
                     <span className="xn-text">Add Products</span>
                   </Link>
                 </li>
                 <li className="active dropdown-menu">
-                  <Link to="" className="dropdown-item">
+                  <Link to="/listproducts" className="dropdown-item">
                     <span className="fa fa-file-text-o" />{" "}
                     <span className="xn-text">List Products</span>
                   </Link>
