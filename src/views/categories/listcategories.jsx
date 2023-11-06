@@ -74,7 +74,7 @@ const Listcategories = () => {
                             return <tr>{subc.name}</tr>
                           })}</td>
                           <td>
-                            <Link to={`/updatecategories/${item._id}`}><button className="btn btn-default btn-rounded btn-sm"><span className="fa fa-pencil" /></button></Link>
+                            <Link to={`/home/updatecategories/${item._id}`}><button className="btn btn-default btn-rounded btn-sm"><span className="fa fa-pencil" /></button></Link>
                             <button className="btn btn-danger btn-rounded btn-sm" onClick={(e) => onDelete(item._id)}><span className="fa fa-times" /></button>
                           </td>
                         </tr>

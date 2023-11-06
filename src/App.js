@@ -12,24 +12,35 @@ import Createsubcategories from './views/subcategories/createsubcategories';
 import Listproducts from './views/products/listproducts';
 import Updateproducts from './views/products/updateproducts';
 import Createproducts from './views/products/createproducts';
+import Login from './views/login';
+import Signup from './views/signup';
+import { Navigate } from 'react-router-dom';
 
 function App() {
+  const Privateroute = ({ children }) => {
+    if (!localStorage.getItem("user")) {
+        return <Navigate to="/"></Navigate>;
+    }
+   return children;
+  };
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path='/'  element={<Home></Home>}>
-            <Route path='/' element={<Layout></Layout>}></Route>
-            <Route path='/listcategories' element={<Listcategories></Listcategories>}></Route>
-            <Route path='/updatecategories/:id' element={<Updatecategories></Updatecategories>}></Route>
-            <Route path='/createcategories/' element={<Createcategories></Createcategories>}></Route>
-            <Route path='/listsubcategories' element={<Listsubcategories></Listsubcategories>}></Route>
-            <Route path='/updatesubcategories/:id' element={<Updatesubcategories></Updatesubcategories>}></Route>
-            <Route path='/createsubcategories/' element={<Createsubcategories></Createsubcategories>}></Route>
-            <Route path='/listproducts' element={<Listproducts></Listproducts>}></Route>
-            <Route path='/updateproducts/:id' element={<Updateproducts></Updateproducts>}></Route>
-            <Route path='/createproducts/' element={<Createproducts></Createproducts>}></Route>
+          <Route path='/home'  element={<Privateroute><Home></Home></Privateroute>}>
+            <Route path='/home' element={<Privateroute><Layout></Layout></Privateroute>}></Route>
+            <Route path='/home/listcategories' element={<Privateroute><Listcategories></Listcategories></Privateroute>}></Route>
+            <Route path='/home/updatecategories/:id' element={<Privateroute><Updatecategories></Updatecategories></Privateroute>}></Route>
+            <Route path='/home/createcategories/' element={<Privateroute><Createcategories></Createcategories></Privateroute>}></Route>
+            <Route path='/home/listsubcategories' element={<Privateroute><Listsubcategories></Listsubcategories></Privateroute>}></Route>
+            <Route path='/home/updatesubcategories/:id' element={<Privateroute><Updatesubcategories></Updatesubcategories></Privateroute>}></Route>
+            <Route path='/home/createsubcategories/' element={<Privateroute><Createsubcategories></Createsubcategories></Privateroute>}></Route>
+            <Route path='/home/listproducts' element={<Privateroute><Listproducts></Listproducts></Privateroute>}></Route>
+            <Route path='/home/updateproducts/:id' element={<Privateroute><Updateproducts></Updateproducts></Privateroute>}></Route>
+            <Route path='/home/createproducts/' element={<Privateroute><Createproducts></Createproducts></Privateroute>}></Route>
           </Route>
+          <Route path='/' element={<Login></Login>}></Route>
+          <Route path='/signup' element={<Signup></Signup>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

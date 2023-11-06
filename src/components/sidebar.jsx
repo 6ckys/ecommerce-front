@@ -44,13 +44,13 @@ const Sidebar = () => {
               </button>
               <ul>
                 <li className="active dropdown-menu">
-                  <Link to="/createcategories" className="dropdown-item">
+                  <Link to="/home/createcategories" className="dropdown-item">
                     <span className="fa fa-plus-square" />{" "}
                     <span className="xn-text">Add Category</span>
                   </Link>
                 </li>
                 <li className="active dropdown-menu">
-                  <Link to="/listcategories" className="dropdown-item">
+                  <Link to="/home/listcategories" className="dropdown-item">
                     <span className="fa fa-file-text-o" />{" "}
                     <span className="xn-text">List Category</span>
                   </Link>
@@ -70,13 +70,13 @@ const Sidebar = () => {
               </button>
               <ul>
                 <li className="active dropdown-menu">
-                  <Link to="/createsubcategories" className="dropdown-item">
+                  <Link to="/home/createsubcategories" className="dropdown-item">
                     <span className="fa fa-plus-square" />{" "}
                     <span className="xn-text">Add Subcategory</span>
                   </Link>
                 </li>
                 <li className="active dropdown-menu">
-                  <Link to="/listsubcategories" className="dropdown-item">
+                  <Link to="/home/listsubcategories" className="dropdown-item">
                     <span className="fa fa-file-text-o" />{" "}
                     <span className="xn-text">List Subcategory</span>
                   </Link>
@@ -96,13 +96,13 @@ const Sidebar = () => {
               </button>
               <ul>
                 <li className="active dropdown-menu">
-                  <Link to="/createproducts" className="dropdown-item">
+                  <Link to="/home/createproducts" className="dropdown-item">
                     <span className="fa fa-plus-square" />{" "}
                     <span className="xn-text">Add Products</span>
                   </Link>
                 </li>
                 <li className="active dropdown-menu">
-                  <Link to="/listproducts" className="dropdown-item">
+                  <Link to="/home/listproducts" className="dropdown-item">
                     <span className="fa fa-file-text-o" />{" "}
                     <span className="xn-text">List Products</span>
                   </Link>
