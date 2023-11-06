@@ -14,6 +14,8 @@ import Updateproducts from './views/products/updateproducts';
 import Createproducts from './views/products/createproducts';
 import Login from './views/login';
 import Signup from './views/signup';
+import Profile from './views/profile';
+import Updateprofile from './views/updateprofile';
 import { Navigate } from 'react-router-dom';
 
 function App() {
@@ -39,6 +41,8 @@ function App() {
             <Route path='/home/updateproducts/:id' element={<Privateroute><Updateproducts></Updateproducts></Privateroute>}></Route>
             <Route path='/home/createproducts/' element={<Privateroute><Createproducts></Createproducts></Privateroute>}></Route>
           </Route>
+          <Route path='/profile' element={<Privateroute><Profile></Profile></Privateroute>}></Route>
+          <Route path='/updateprofile' element={<Privateroute><Updateprofile></Updateprofile></Privateroute>}></Route>
           <Route path='/' element={<Login></Login>}></Route>
           <Route path='/signup' element={<Signup></Signup>}></Route>
         </Routes>
