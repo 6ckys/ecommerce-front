@@ -8,4 +8,4 @@ const update=(id, Data)=>{
     return http.put(`/user/${id}`, Data)
 }
 
-export default{getOne}
+export default{getOne, update}

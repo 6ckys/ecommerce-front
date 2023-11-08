@@ -16,12 +16,11 @@ const Updateprofile = () => {
       formdata.append('username',data.username)
       formdata.append('email',data.email)
       formdata.append('phone',data.phone)
-      formdata.append('photo',data.photo)
   
   
-    /*for(let i=0;i<=image.length;i++){
+    for(let i=0;i<=image.length;i++){
       formdata.append("file",image[i])
-    }*/
+    }
     Swal.fire({
       title: 'Do you want to cofirm ?',
       showDenyButton: true,
@@ -51,7 +50,7 @@ const Updateprofile = () => {
     });
   }, [])
   const HandleImage = (e) => {
-    setImage(e.target.file);
+    setImage(e.target.files);
   };
   const OnChangeHandler=(e)=>{
     setData({
