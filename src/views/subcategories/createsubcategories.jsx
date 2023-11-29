@@ -2,9 +2,22 @@ import React, { useEffect, useState } from 'react'
 import subcategoryservice from '../../services/subcategoryservice';
 import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import categoryservice from '../../services/categoryservice'
 
 const Createsubcategories = () => {
   const [data, setData]= useState({});
+  const [categories, setCategories]= useState([]);
+  const getAllCategories = () => { 
+    categoryservice.GetAll().then((res) => {
+        console.log(res);
+        setCategories(res.data.data);
+    }).catch((err)=> {
+        console.log(err);
+    })
+}
+useEffect(() => {
+    getAllCategories()
+},[])
   const OnChangeHandler=(e)=>{
     setData({
       ...data,[e.target.name]:e.target.value,
@@ -25,7 +38,7 @@ const Createsubcategories = () => {
         subcategoryservice.create(data)
         .then((res)=>{
           console.log(res)
-          navigate('/listsubcategories')
+          navigate('/home/listsubcategories')
         })
         Swal.fire('Created!', '', 'success')
       } else if (result.isDenied) {
@@ -53,9 +66,16 @@ const Createsubcategories = () => {
       </div>
     </div> 
     <div className="form-group">
-      <label className="col-md-2 control-label">Catégorie Id</label>
+      <label className="col-md-2 control-label">Catégorie</label>
       <div className="col-md-10">
-        <textarea className="form-control" rows={5} defaultValue={""} name='category' onChange={OnChangeHandler}/>
+        <select type="text" className="form-control" name='category' onChange={OnChangeHandler}>
+          {categories?.map((item)=>{
+            return (<option value={item._id}>{item.name}</option>
+
+            )
+          })}
+          
+        </select>
       </div>
     </div> 
     <button onClick={OnSubmitHandler}>Submit</button>                                  

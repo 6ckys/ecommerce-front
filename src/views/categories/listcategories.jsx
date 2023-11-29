@@ -4,12 +4,15 @@ import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
 
 const Listcategories = () => {
-    const [categories, setCategories] = useState({})
+    const [categories, setCategories] = useState([])
+    //const [originalCategories, setOriginalCategories] = useState([])
     const [affiche, setAffiche] = useState(false)
+    //const [searchValue, setSearchValue] = useState("")
     const getAllCategories = () => { 
         categoryservice.GetAll().then((res) => {
             console.log(res);
             setCategories(res.data.data);
+            //setOriginalCategories(res.data.data);
             setAffiche(true);
         }).catch((err)=> {
             console.log(err);
@@ -18,6 +21,12 @@ const Listcategories = () => {
     useEffect(() => {
         getAllCategories()
     },[])
+    /*useEffect(() => {
+      const newCategories = originalCategories.filter(category => {
+        return category.name.toLowerCase().includes(searchValue.toLowerCase());
+      })
+      setCategories(newCategories)
+    }, [searchValue])*/
     const onDelete = (id) => {
       Swal.fire({
         title: 'Are you sure?',
@@ -40,6 +49,19 @@ const Listcategories = () => {
         }
       })
     }
+    const [inputText, setInputText] = useState("");
+  let inputHandler = (e) => {
+    //convert input text to lower case
+    var lowerCase = e.target.value.toLowerCase();
+    setInputText(lowerCase);
+  };
+  const filteredData = categories?.filter((el) => {
+    if (inputText === '') {
+        return el;
+    } else {
+        return el.name.toLowerCase().includes(inputText)
+    }
+})
     if(affiche)
   {
     return (
@@ -51,6 +73,7 @@ const Listcategories = () => {
       </div>
       <div className="panel-body panel-body-table">
         <div className="table-responsive">
+        Search: <input type="text" onChange={inputHandler} placeholder="Search by name"/>
           <table className="table table-bordered table-striped table-actions">
             <thead>
               <tr>
@@ -63,7 +86,7 @@ const Listcategories = () => {
               </tr>
             </thead>
             <tbody>
-                {categories.map((item) => {
+                {filteredData.map((item) => {
                     return (
                         <tr id="trow_1">
                           <td className="text-center">{item._id}</td>

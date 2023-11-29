@@ -2,10 +2,23 @@ import React, { useEffect, useState } from 'react'
 import productservice from '../../services/productservice';
 import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import subcategoryservice from '../../services/subcategoryservice'
 
 const Createproducts = () => {
   const [data, setData]= useState({});
   const [image, setImage]= useState([]);
+  const [subcategories, setSubcategories]= useState([]);
+  const getAllSubcategories = () => { 
+    subcategoryservice.GetAll().then((res) => {
+        console.log(res);
+        setSubcategories(res.data.data);
+    }).catch((err)=> {
+        console.log(err);
+    })
+}
+useEffect(() => {
+    getAllSubcategories()
+},[])
   const OnChangeHandler=(e)=>{
     setData({
       ...data,[e.target.name]:e.target.value,
@@ -36,7 +49,7 @@ const Createproducts = () => {
         productservice.create(formdata)
         .then((res)=>{
           console.log(res)
-          navigate('/listproducts')
+          navigate('/home/listproducts')
         })
         Swal.fire('Created!', '', 'success')
       } else if (result.isDenied) {
@@ -75,7 +88,14 @@ const Createproducts = () => {
     <div className="form-group">
       <label className="col-md-2 control-label">Subcategorie</label>
       <div className="col-md-10">
-        <input type="text" className="form-control" name='subcategory' onChange={OnChangeHandler}/>
+        <select type="text" className="form-control" name='subcategory' onChange={OnChangeHandler}>
+          {subcategories?.map((item)=>{
+            return (<option value={item._id}>{item.name}</option>
+
+            )
+          })}
+          
+        </select>
       </div>
     </div>                                                                   
     <div className="form-group">
